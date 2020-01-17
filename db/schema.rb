@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_01_17_181937) do
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
-    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
