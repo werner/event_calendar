@@ -20,9 +20,18 @@ RSpec.describe EventsController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      event = Event.create! valid_attributes
+      Event.create! valid_attributes
       get :index
       expect(response).to be_successful
+      expect(JSON.parse(response.body).first.except('id')).to(
+        eq(
+          {
+            'description' => 'Party',
+            'start_date' => '2010-01-01 03:00',
+            'end_date' => '2010-01-02 03:00'
+          }
+        )
+      )
     end
   end
 
